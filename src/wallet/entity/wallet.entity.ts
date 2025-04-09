@@ -7,7 +7,7 @@ import {
 } from 'typeorm';
 import { CurrencyEnum } from '../enums/wallet.enum';
 
-@Entity()
+@Entity('wallet')
 export class Wallet {
   @PrimaryGeneratedColumn()
   id: number;

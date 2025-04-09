@@ -3,12 +3,15 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Wallet } from '../entity/wallet.entity';
 import { ICreateWallet, IWalletBalance } from '../interfaces/wallet.interface';
+import { WalletTransaction } from '../entity/wallet-transaction.entity';
 
 @Injectable()
 export class WalletService {
   constructor(
     @InjectRepository(Wallet)
     private readonly walletRepository: Repository<Wallet>,
+    @InjectRepository(WalletTransaction)
+    private readonly walletTransactionRepository: Repository<WalletTransaction>,
   ) {}
 
   /**
@@ -38,5 +41,18 @@ export class WalletService {
         [data.currency]: wallet.balance[data.currency],
       },
     };
+  }
+
+  /**
+   * Get transaction history of a wallet
+   * @param data
+   * @returns
+   */
+  public async getTransactions(walletId: string): Promise<WalletTransaction[]> {
+    return await this.walletTransactionRepository.find({
+      where: {
+        walletId,
+      },
+    });
   }
 }

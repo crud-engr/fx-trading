@@ -10,7 +10,7 @@ import {
   TransactionTypeEnum,
 } from '../enums/wallet.enum';
 
-@Entity()
+@Entity('wallet_transactions')
 export class WalletTransaction {
   @PrimaryGeneratedColumn()
   id: number;

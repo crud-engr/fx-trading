@@ -8,6 +8,7 @@ import { ExchangeRateController } from 'src/integrations/controllers/exchange-ra
 import { ExchangeRateGateway } from 'src/integrations/services/exchange-rates/exchange-rate.gateway';
 import { User } from 'src/users/entity/user.entity';
 import { UsersModule } from 'src/users/users.module';
+import { WalletTransaction } from 'src/wallet/entity/wallet-transaction.entity';
 import { Wallet } from 'src/wallet/entity/wallet.entity';
 import { WalletModule } from 'src/wallet/wallet.module';
 
@@ -24,8 +25,8 @@ import { WalletModule } from 'src/wallet/wallet.module';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: [User, Wallet],
-      synchronize: false,
+      entities: [User, Wallet, WalletTransaction],
+      synchronize: true,
     }),
   ],
   controllers: [AppController, ExchangeRateController],

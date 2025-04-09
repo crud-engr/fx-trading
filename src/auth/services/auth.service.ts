@@ -3,8 +3,6 @@ import {
   ConflictException,
   Injectable,
   Logger,
-  NotFoundException,
-  UnauthorizedException,
 } from '@nestjs/common';
 import { GeneralUtil } from 'src/common/utils/general.util';
 import {
